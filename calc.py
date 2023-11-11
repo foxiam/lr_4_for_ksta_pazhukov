@@ -2,9 +2,14 @@ import math
 
 
 class SimpleCalc:
+    """Класс простого калькулятора"""
     res = 0.0
 
     def __init__(self) -> None:
+        """
+        Инициализация операторов
+        """
+
         self.operators = {
             '+': lambda res, x: res + x,
             '-': lambda res, x: res - x,
@@ -23,19 +28,57 @@ class SimpleCalc:
         }
 
     def input(self, inp=None) -> float | int | None:
+        """
+        Метод ввода оператора и числа из консоли
+        Args:
+            inp:    str строка с оператором и числом(опционально).
+
+        Returns:
+            float | int | None результат расчетов
+
+        Examples:
+            >>> calculator = SimpleCalc()
+            >>> calculator.input('+ 5')
+            5.0
+            >>> calculator.input()
+            input: * 3
+            15.0
+        """
+
         if not inp:
             inp = input(f'{self.res} ')
-        [operator, number] = (inp.strip().split() + ['0'])[:2]
         try:
+            [operator, number] = (inp.strip().split() + ['0'])[:2]
             number = float(number) if '.' in number else int(number)
             return self.calc(operator, number)
         except:
             print('Пум пум ОБШИБОЧКА')
     
-    def calc(self, operator: str, number: int | float) -> float | int:
+    def calc(self, operator: str, number: int | float = 0.0) -> float | int:
+        """
+        Метод ввода оператора и числа из консоли
+        Args:
+            operator:    str оператор.
+            number:      int | float число(опционально)
+
+        Returns:
+            float | int | None результат расчетов
+
+        Examples:
+            >>> calculator = SimpleCalc()
+            >>> calculator.calc('+', 5.5)
+            5.0
+            >>> calculator.calc('round_up')
+            6
+        """
+
         self.res = self.operators[operator](self.res, number)
         return self.res
     
     def __help(self) -> float | int:
+        """
+        Вывод всех доступных операторов в консоль
+        """
+        
         print('Operators:', *self.operators.keys(), sep='\n\t')
         return self.res

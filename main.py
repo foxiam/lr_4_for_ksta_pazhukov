@@ -1,6 +1,6 @@
 from calc import SimpleCalc
     
 if __name__ == "__main__":
-    calulator = SimpleCalc()
+    calculator = SimpleCalc()
     while True:
-        calulator.input()
+        calculator.input()
