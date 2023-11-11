@@ -33,16 +33,16 @@ class SimpleCalc:
         Args:
             inp:    str строка с оператором и числом(опционально).
 
-        Returns:
-            float | int | None результат расчетов
-
         Examples:
             >>> calculator = SimpleCalc()
             >>> calculator.input('+ 5')
             5.0
             >>> calculator.input()
-            input: * 3
+            input * 3
             15.0
+
+        Returns:
+            float | int | None результат расчетов
         """
 
         if not inp:
@@ -61,15 +61,15 @@ class SimpleCalc:
             operator:    str оператор.
             number:      int | float число(опционально)
 
-        Returns:
-            float | int | None результат расчетов
-
         Examples:
             >>> calculator = SimpleCalc()
             >>> calculator.calc('+', 5.5)
             5.0
             >>> calculator.calc('round_up')
             6
+
+        Returns:
+            float | int | None результат расчетов
         """
 
         self.res = self.operators[operator](self.res, number)
@@ -79,6 +79,6 @@ class SimpleCalc:
         """
         Вывод всех доступных операторов в консоль
         """
-        
+
         print('Operators:', *self.operators.keys(), sep='\n\t')
         return self.res
