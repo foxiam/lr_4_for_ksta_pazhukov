@@ -15,11 +15,13 @@ class SimpleCalc:
             '-': lambda res, x: res - x,
             '*': lambda res, x: res * x,
             '/': lambda res, x: res / x,
+            '**': lambda res, x: res ** x,
             '%': lambda res, x: res % x,
             'log': lambda res, x: math.log(res, x),
             'sin': lambda res, x: math.sin(res),
             'cos': lambda res, x: math.cos(res),
             'tg': lambda res, x: math.tan(res),
+            'ctg': lambda res, x: 1 / math.tan(res),
             'round_math': lambda res, x: round(res),
             'round_up': lambda res, x: math.ceil(res),
             'round_down': lambda res, x: math.floor(res),
@@ -27,7 +29,7 @@ class SimpleCalc:
             'help': lambda res, x: self.__help()
         }
 
-    def input(self, inp=None) -> float | int | None:
+    def input(self, inp: int | None = None) -> float | int | None:
         """
         Метод ввода оператора и числа из консоли
         Args:
